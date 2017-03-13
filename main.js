@@ -1,3 +1,5 @@
+/* global catalog */
+
 function renderItem(item) {
 
   /**
@@ -60,3 +62,13 @@ function renderItem(item) {
 
   return $item
 }
+
+window.addEventListener('DOMContentLoaded', function (event) {
+
+  var $catalog = document.querySelector('#catalog')
+
+  catalog
+    .forEach(function (item) {
+      $catalog.appendChild(renderItem(item))
+    })
+})
