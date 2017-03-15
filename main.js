@@ -137,9 +137,19 @@ function findItem(items, itemId) {
   }
 }
 
+function showView($views, viewId) {
+  for (var i = 0; i < $views.children.length; i++) {
+    var $childView = $views.children[i]
+    if ($childView.id !== viewId) {
+      $childView.classList.add('hidden')
+    }
+  }
+}
+
 window.addEventListener('DOMContentLoaded', function (event) {
 
   var $catalog = document.querySelector('#catalog')
+  var $views = document.querySelector('#views')
 
   $catalog.addEventListener('click', function (event) {
     if (event.target.tagName !== 'A') {
@@ -148,7 +158,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
     var itemId = event.target.dataset.itemId
     var item = findItem(catalog, itemId)
     var $item = renderItemDetails(item)
-    console.log($item)
+    showView($views, 'details')
   })
 
   catalog
