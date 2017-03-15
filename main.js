@@ -46,6 +46,7 @@ function renderItem(item) {
 
   var $a = document.createElement('a')
   $a.textContent = 'Learn More'
+  $a.dataset.itemId = item.id
 
   $link.appendChild($a)
   $description.appendChild($link)
@@ -78,7 +79,8 @@ window.addEventListener('DOMContentLoaded', function (event) {
     if (event.target.tagName !== 'A') {
       return
     }
-    console.log('clicked!')
+    var itemId = event.target.dataset.itemId
+    console.log(itemId)
   })
 
   catalog
