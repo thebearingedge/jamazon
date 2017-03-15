@@ -143,6 +143,9 @@ function showView($views, viewId) {
     if ($childView.id !== viewId) {
       $childView.classList.add('hidden')
     }
+    else {
+      $childView.classList.remove('hidden')
+    }
   }
 }
 
@@ -150,6 +153,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
 
   var $catalog = document.querySelector('#catalog')
   var $views = document.querySelector('#views')
+  var $details = document.querySelector('#details')
 
   $catalog.addEventListener('click', function (event) {
     if (event.target.tagName !== 'A') {
@@ -158,6 +162,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
     var itemId = event.target.dataset.itemId
     var item = findItem(catalog, itemId)
     var $item = renderItemDetails(item)
+    $details.appendChild($item)
     showView($views, 'details')
   })
 
