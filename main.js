@@ -71,6 +71,15 @@ function renderItem(item) {
   return $item
 }
 
+function findItem(items, itemId) {
+  for (var i = 0; i < items.length; i++) {
+    var item = items[i]
+    if (item.id.toString() === itemId) {
+      return item
+    }
+  }
+}
+
 window.addEventListener('DOMContentLoaded', function (event) {
 
   var $catalog = document.querySelector('#catalog')
@@ -80,7 +89,8 @@ window.addEventListener('DOMContentLoaded', function (event) {
       return
     }
     var itemId = event.target.dataset.itemId
-    console.log(itemId)
+    var item = findItem(catalog, itemId)
+    console.log(item)
   })
 
   catalog
