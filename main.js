@@ -42,6 +42,13 @@ function renderItem(item) {
   var $description = document.createElement('p')
   $description.textContent = item.description
 
+  var $link = document.createElement('p')
+
+  var $a = document.createElement('a')
+  $a.textContent = 'Learn More'
+
+  $link.appendChild($a)
+  $description.appendChild($link)
   $caption.appendChild($description)
 
   var $price = document.createElement('span')
@@ -66,6 +73,13 @@ function renderItem(item) {
 window.addEventListener('DOMContentLoaded', function (event) {
 
   var $catalog = document.querySelector('#catalog')
+
+  $catalog.addEventListener('click', function (event) {
+    if (event.target.tagName !== 'A') {
+      return
+    }
+    console.log('clicked!')
+  })
 
   catalog
     .forEach(function (item) {
