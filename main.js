@@ -1,4 +1,4 @@
-/* global catalog */
+/* global app */
 
 function renderListItem(item) {
 
@@ -160,13 +160,13 @@ window.addEventListener('DOMContentLoaded', function (event) {
       return
     }
     var itemId = event.target.dataset.itemId
-    var item = findItem(catalog, itemId)
+    var item = findItem(app.catalog, itemId)
     var $item = renderItemDetails(item)
     $details.appendChild($item)
     showView($views, 'details')
   })
 
-  catalog
+  app.catalog
     .forEach(function (item) {
       $catalog.appendChild(renderListItem(item))
     })
