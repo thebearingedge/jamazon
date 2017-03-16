@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 var app = {
   cart: {
-    items: {}
+    items: []
   },
   catalog: [
     {
