@@ -176,7 +176,9 @@ window.addEventListener('DOMContentLoaded', function (event) {
     if (event.target.tagName !== 'BUTTON') {
       return
     }
-    console.log(event.target.getAttribute('data-item-id'))
+    var itemId = event.target.getAttribute('data-item-id')
+    var item = findItem(app.catalog, itemId)
+    console.log(item)
   })
 
   app.catalog
