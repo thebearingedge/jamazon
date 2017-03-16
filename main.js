@@ -125,6 +125,11 @@ function renderItemDetails(item) {
   $details.textContent = item.details
   $info.appendChild($details)
 
+  var $add = document.createElement('button')
+  $add.classList.add('btn', 'btn-success')
+  $add.textContent = 'Add to Cart'
+  $info.appendChild($add)
+
   return $itemDetails
 }
 
