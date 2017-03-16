@@ -180,7 +180,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
     var itemId = event.target.getAttribute('data-item-id')
     var item = findItem(app.catalog, itemId)
     app.cart.items.push(item)
-    console.log(app.cart.items)
+    $cartCount.textContent = app.cart.items.length
   })
 
   $cartCount.textContent = app.cart.items.length
