@@ -171,6 +171,13 @@ window.addEventListener('DOMContentLoaded', function (event) {
     showView($views, 'details')
   })
 
+  $details.addEventListener('click', function (event) {
+    if (event.target.tagName !== 'BUTTON') {
+      return
+    }
+    console.log(event.target.tagName)
+  })
+
   app.catalog
     .forEach(function (item) {
       $catalog.appendChild(renderListItem(item))
