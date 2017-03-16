@@ -62,3 +62,8 @@ img {
   font-size: 2rem;
   font-weight: 700;
 }
+
+#checkout h1,
+#checkout h3 {
+  text-align: center;
+}
