@@ -160,6 +160,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
   var $catalog = document.querySelector('#catalog')
   var $views = document.querySelector('#views')
   var $details = document.querySelector('#details')
+  var $cartCount = document.querySelector('#cart-count')
 
   $catalog.addEventListener('click', function (event) {
     if (event.target.tagName !== 'A') {
@@ -181,6 +182,8 @@ window.addEventListener('DOMContentLoaded', function (event) {
     app.cart.items.push(item)
     console.log(app.cart.items)
   })
+
+  $cartCount.textContent = app.cart.items.length
 
   app.catalog
     .forEach(function (item) {
