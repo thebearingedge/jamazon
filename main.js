@@ -1,4 +1,4 @@
-/* global catalog */
+/* global app */
 
 function renderListItem(item) {
 
@@ -125,6 +125,12 @@ function renderItemDetails(item) {
   $details.textContent = item.details
   $info.appendChild($details)
 
+  var $add = document.createElement('button')
+  $add.classList.add('btn', 'btn-success')
+  $add.textContent = 'Add to Cart'
+  $add.setAttribute('data-item-id', item.id)
+  $info.appendChild($add)
+
   return $itemDetails
 }
 
@@ -154,19 +160,38 @@ window.addEventListener('DOMContentLoaded', function (event) {
   var $catalog = document.querySelector('#catalog')
   var $views = document.querySelector('#views')
   var $details = document.querySelector('#details')
+  var $home = document.querySelector('#jamazon')
+  var $cartCount = document.querySelector('#cart-count')
 
   $catalog.addEventListener('click', function (event) {
     if (event.target.tagName !== 'A') {
       return
     }
     var itemId = event.target.dataset.itemId
-    var item = findItem(catalog, itemId)
+    var item = findItem(app.catalog, itemId)
     var $item = renderItemDetails(item)
     $details.appendChild($item)
     showView($views, 'details')
   })
 
-  catalog
+  $details.addEventListener('click', function (event) {
+    if (event.target.tagName !== 'BUTTON') {
+      return
+    }
+    var itemId = event.target.getAttribute('data-item-id')
+    var item = findItem(app.catalog, itemId)
+    app.cart.items.push(item)
+    $cartCount.textContent = app.cart.items.length
+  })
+
+  $home.addEventListener('click', function (event) {
+    showView($views, 'catalog')
+    $details.innerHTML = ''
+  })
+
+  $cartCount.textContent = app.cart.items.length
+
+  app.catalog
     .forEach(function (item) {
       $catalog.appendChild(renderListItem(item))
     })
