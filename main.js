@@ -128,6 +128,7 @@ function renderItemDetails(item) {
   var $add = document.createElement('button')
   $add.classList.add('btn', 'btn-success')
   $add.textContent = 'Add to Cart'
+  $add.setAttribute('data-item-id', item.id)
   $info.appendChild($add)
 
   return $itemDetails
@@ -175,7 +176,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
     if (event.target.tagName !== 'BUTTON') {
       return
     }
-    console.log(event.target.tagName)
+    console.log(event.target.getAttribute('data-item-id'))
   })
 
   app.catalog
