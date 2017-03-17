@@ -213,6 +213,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
     event.target.reset()
     app.cart.items = []
     $cartCount.textContent = app.cart.items.length
+    showView($views, 'catalog')
   })
 
   $cartCount.textContent = app.cart.items.length
