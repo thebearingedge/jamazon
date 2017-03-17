@@ -155,6 +155,14 @@ function showView($views, viewId) {
   }
 }
 
+function getCartTotal(items) {
+  var total = 0
+  items.forEach(function (item) {
+    total += item.price
+  })
+  return total
+}
+
 window.addEventListener('DOMContentLoaded', function (event) {
 
   var $catalog = document.querySelector('#catalog')
@@ -162,6 +170,9 @@ window.addEventListener('DOMContentLoaded', function (event) {
   var $details = document.querySelector('#details')
   var $home = document.querySelector('#jamazon')
   var $cartCount = document.querySelector('#cart-count')
+  var $cart = document.querySelector('#cart')
+  var $cartTotal = document.querySelector('#total')
+  var $orderForm = document.querySelector('#order-form')
 
   $catalog.addEventListener('click', function (event) {
     if (event.target.tagName !== 'A') {
@@ -187,6 +198,22 @@ window.addEventListener('DOMContentLoaded', function (event) {
   $home.addEventListener('click', function (event) {
     showView($views, 'catalog')
     $details.innerHTML = ''
+  })
+
+  $cart.addEventListener('click', function (event) {
+    showView($views, 'checkout')
+    $cartTotal.textContent = '$' + getCartTotal(app.cart.items)
+  })
+
+  $orderForm.addEventListener('submit', function (event) {
+    event.preventDefault()
+    var order = new FormData(event.target)
+    var name = order.get('name')
+    alert('Thank you for your order, ' + name + '!')
+    event.target.reset()
+    app.cart.items = []
+    $cartCount.textContent = app.cart.items.length
+    showView($views, 'catalog')
   })
 
   $cartCount.textContent = app.cart.items.length

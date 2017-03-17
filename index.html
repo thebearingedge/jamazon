@@ -23,7 +23,47 @@
     </nav>
     <div class="container-fluid" id="views">
       <div class="row" id="catalog"></div>
-      <div class="row" id="details"></div>
+      <div class="row hidden" id="details"></div>
+      <div class="row hidden" id="checkout">
+        <div class="col-md-offset-3 col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div class="panel-title">
+                <h1>Checkout</h1>
+              </div>
+            </div>
+            <div class="panel-body">
+              <h3>Grand Total: <span id="total">$0.00</span></h3>
+            </div>
+            <div class="panel-body">
+              <hr/>
+              <form id="order-form">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input id="name" name="name" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <label for="credit-card">Credit Card</label>
+                  <input id="credit-card" name="credit-card" class="form-control"/>
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <textarea id="address" name="address" class="form-control" rows="3">
+                  </textarea>
+                </div>
+                <div class="form-group">
+                  <label for="comments">Comments</label>
+                  <textarea id="comments" name="comments" class="form-control" rows="3">
+                  </textarea>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right">
+                  Place Order
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="model.js"></script>
     <script src="main.js"></script>
