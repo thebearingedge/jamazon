@@ -207,7 +207,9 @@ window.addEventListener('DOMContentLoaded', function (event) {
 
   $orderForm.addEventListener('submit', function (event) {
     event.preventDefault()
-    console.log('form submitted!')
+    var order = new FormData(event.target)
+    var name = order.get('name')
+    alert('Thank you for your order, ' + name + '!')
   })
 
   $cartCount.textContent = app.cart.items.length
