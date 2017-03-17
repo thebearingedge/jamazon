@@ -155,6 +155,14 @@ function showView($views, viewId) {
   }
 }
 
+function getCartTotal(items) {
+  var total = 0
+  items.forEach(function (item) {
+    total += item.price
+  })
+  return total
+}
+
 window.addEventListener('DOMContentLoaded', function (event) {
 
   var $catalog = document.querySelector('#catalog')
