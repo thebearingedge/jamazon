@@ -171,6 +171,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
   var $home = document.querySelector('#jamazon')
   var $cartCount = document.querySelector('#cart-count')
   var $cart = document.querySelector('#cart')
+  var $cartTotal = document.querySelector('#total')
 
   $catalog.addEventListener('click', function (event) {
     if (event.target.tagName !== 'A') {
@@ -199,7 +200,8 @@ window.addEventListener('DOMContentLoaded', function (event) {
   })
 
   $cart.addEventListener('click', function (event) {
-    console.log(event.target.id)
+    showView($views, 'checkout')
+    $cartTotal.textContent = '$' + getCartTotal(app.cart.items)
   })
 
   $cartCount.textContent = app.cart.items.length
