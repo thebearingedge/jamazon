@@ -210,6 +210,9 @@ window.addEventListener('DOMContentLoaded', function (event) {
     var order = new FormData(event.target)
     var name = order.get('name')
     alert('Thank you for your order, ' + name + '!')
+    event.target.reset()
+    app.cart.items = []
+    $cartCount.textContent = app.cart.items.length
   })
 
   $cartCount.textContent = app.cart.items.length
