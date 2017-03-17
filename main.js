@@ -172,6 +172,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
   var $cartCount = document.querySelector('#cart-count')
   var $cart = document.querySelector('#cart')
   var $cartTotal = document.querySelector('#total')
+  var $orderForm = document.querySelector('#order-form')
 
   $catalog.addEventListener('click', function (event) {
     if (event.target.tagName !== 'A') {
@@ -202,6 +203,11 @@ window.addEventListener('DOMContentLoaded', function (event) {
   $cart.addEventListener('click', function (event) {
     showView($views, 'checkout')
     $cartTotal.textContent = '$' + getCartTotal(app.cart.items)
+  })
+
+  $orderForm.addEventListener('submit', function (event) {
+    event.preventDefault()
+    console.log('form submitted!')
   })
 
   $cartCount.textContent = app.cart.items.length
